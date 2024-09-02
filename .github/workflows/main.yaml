@@ -10,49 +10,18 @@ jobs:
       - name: Get team members
         id: get_members
         run: |
-            bearer_token="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"
-            
-            organization="uncoma-curza-lab"
-            team="peylw24"
-
-            # Function to fetch and process team members
-            fetch_team_members() {
-            page=1
-            while true; do
-                url="https://api.github.com/orgs/$organization/teams/$team/members?page=$page"
-
-                response=$(curl -s -H "Authorization: Bearer $bearer_token" "$url")
-
-                # Check for errors
-                if jq -e '.message' <<< "$response" > /dev/null; then
-                error_message=$(jq -r .message <<< "$response")
-                echo "Error: $error_message"
+            curl -L \
+               -H "Accept: application/vnd.github+json" \
+                -H "Authorization: Bearer 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" \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                https://api.github.com/orgs/uncoma-curza-lab/teams/peylw24/members?per_page=100 > response.json
+            cat response.json
+            if jq -e .message response.json > /dev/null; then
+                echo "Error: $(jq -r .message response.json)"
                 exit 1
-                fi
-
-                # Extract member logins
-                jq -r '.[].login' <<< "$response" >> members.txt
-
-                # Check for next page
-                next_page=$(jq -r '.["links"][] | select(.rel == "next")["href"]' <<< "$response")
-
-                # Break loop if no next page
-                if [[ -z "$next_page" ]]; then
-                break
-                fi
-
-                page=$((page+1))
-            done
-            }
-
-            # Call the function to fetch and process members
-            fetch_team_members
-
-            # Count and print the number of members
-            num_members=$(wc -l members.txt | awk '{print $1}')
-            echo "Number of members: $num_members"
-
-            # Print the list of members
+            fi
+            jq -r '.[].login' response.json > members.txt
+            echo "Number of members: $(wc -l members.txt)"
             cat members.txt
 
       - name: Generate member pages
