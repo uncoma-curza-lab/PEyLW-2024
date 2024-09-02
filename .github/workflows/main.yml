@@ -12,7 +12,11 @@ jobs:
       - name: Get team members
         id: get_members
         run: |
-          curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/uncoma-curza-lab/teams/peylw24/members | jq -r '.[] | .login' > members.txt
+            curl -L \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/orgs/uncoma-curza-lab/teams/peylw24/members | jq -r '.[] | .login' > members.txt
       - name: Generate member pages
         run: |
           while IFS= read -r member; do
