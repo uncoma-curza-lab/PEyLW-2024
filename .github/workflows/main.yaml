@@ -1,0 +1,35 @@
+name: Generate Member Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get team members
+        id: get_members
+        uses: actions/toolkit@v3
+        with:
+          run: |
+            curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/your-org/teams/your-team/members | jq -r '.[] | .login' > members.txt
+      - name: Generate member pages
+        run: |
+          while IFS= read -r member; do
+            # Obtener el nombre del alumno (adaptar según tu estructura)
+            alumno=$(echo "$member" | sed 's/niunmango/Ramiro García Poggi/g')
+            # Verificar si el subdirectorio ya existe
+            if [ ! -d "alumnos/$alumno" ]; then
+              mkdir -p "alumnos/$alumno"
+              cp index.html "alumnos/$alumno/index.html"
+              sed -i "s/niunmango/$alumno/g" "alumnos/$alumno/index.html"
+              echo "<li><a href=\"alumnos/$alumno/index.html\">$alumno</a></li>" >> index.html
+            fi
+          done < members.txt
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
