@@ -40,8 +40,16 @@ jobs:
             # Clear existing links from main index.html
             sed -i '/<li><a href="\/alumnos\/.*\/index\.html">.*<\/a><\/li>/d' index.html
 
-            # Loop through members and add links to main index.html within the <ul>
-            sed -i '/<\/ul>/i\  <li><a href="alumnos/$(cat members.txt | sed "s/niunmango/Ramiro García Poggi/g")/index.html">$(cat members.txt | sed "s/niunmango/Ramiro García Poggi/g")</a></li>' index.html
+            # Clear everything after </ul>
+            sed -i '/<\/ul>/,$d' index.html
+
+            # Loop through members and add links to main index.html
+            while IFS= read -r member; do
+                echo "<li><a href=\"alumnos/$member/index.html\">$member</a></li>" >> index.html
+            done < members.txt
+
+            # Add closing
+            sed -i '$a </ul>\n</body>\n</html>' index.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
