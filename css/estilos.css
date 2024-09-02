@@ -15,20 +15,21 @@ h1 {
 ul {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 li a {
     min-width: 100px;
+    text-align: center;
     padding: 15px; /* Adjust padding as needed */
     color: white; /* Darker text color */
     font-weight: bold; /* Clearer text */
     align-items: center; /* Center content vertically */
-    justify-content: space-between; /* Space content horizontally */
     background-color: #999;
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
-    display: inline-block;
 }
 
 li a:hover {
