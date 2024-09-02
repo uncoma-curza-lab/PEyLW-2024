@@ -19,7 +19,7 @@ jobs:
         with:
           org: uncoma-curza-lab
           team_slug: peylw24
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: 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
 
       - run: "echo ${{ steps.get-members.outputs.members }}"
         shell: bash
