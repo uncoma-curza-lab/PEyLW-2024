@@ -12,11 +12,19 @@ jobs:
       - name: Get team members
         id: get_members
         run: |
-          curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/your-org/teams/your-team/members | jq -r '.[] | .login' > members.txt
+          curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/orgs/uncoma-curza-lab/teams/peylw24/members | jq -r '.[] | .login' > members.txt
       - name: Generate member pages
         run: |
           while IFS= read -r member; do
-            # ... (your existing code for generating member pages)
+            # Obtener el nombre del alumno (adaptar según tu estructura)
+            alumno=$(echo "$member" | sed 's/niunmango/Ramiro García Poggi/g')
+            # Verificar si el subdirectorio ya existe
+            if [ ! -d "alumnos/$alumno" ]; then
+              mkdir -p "alumnos/$alumno"
+              cp index.html "alumnos/$alumno/index.html"
+              sed -i "s/niunmango/$alumno/g" "alumnos/$alumno/index.html"
+              echo "<li><a href=\"alumnos/$alumno/index.html\">$alumno</a></li>" >> index.html
+            fi
           done < members.txt
       - name: Update index.html
         run: |
