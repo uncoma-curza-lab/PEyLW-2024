@@ -18,14 +18,16 @@ ul {
 }
 
 li a {
-    text-decoration: none;
-    color: #333;
-    padding: 10px;
-    display: block;
-    background-color: #e0e0e0;
-    border-radius: 5px;
+    min-height: 100px; /* Minimum height of 100px */
+    padding: 15px; /* Adjust padding as needed */
+    color: #000; /* Darker text color */
+    font-weight: bold; /* Clearer text */
+    display: flex; /* Use flexbox for side-by-side layout */
+    align-items: center; /* Center content vertically */
+    justify-content: space-between; /* Space content horizontally */
 }
 
 li a:hover {
-    background-color: #ddd;
+    background-color: #333; /* Darker hover background */
+    color: #fff; /* White text on hover */
 }
