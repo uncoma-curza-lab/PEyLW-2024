@@ -10,6 +10,7 @@ jobs:
       - name: Get team members
         id: get_members
         run: |
+            echo ${{ secrets.ACTIONS }}
             curl -L \
                -H "Accept: application/vnd.github+json" \
                 -H "Authorization: Bearer ${{ secrets.ACTIONS }}" \
@@ -49,7 +50,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
-
-
-          
-        
