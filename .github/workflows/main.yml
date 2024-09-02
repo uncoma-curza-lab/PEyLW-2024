@@ -14,14 +14,14 @@ jobs:
 
       - name: List team members
         id: get-members
-        uses: GuillaumeFalourd/github-team-members@v1
+        uses: garnertb/get-team-members@v1
         with:
           org_slug: uncoma-curza-lab
           team_slug: peylw24
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Output team members
-        run: echo ${{ steps.get-members.outputs.members }}
+      - run: "echo ${{ steps.get-members.outputs.members }}"
+        shell: bash
 
 
           
