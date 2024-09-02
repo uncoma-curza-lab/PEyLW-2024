@@ -2,11 +2,12 @@ name: List Team Members
 
 on: [push]
 
+permissions:
+  contents: read
+
 jobs:
   list-team-members:
     runs-on: ubuntu-latest
-    permissions:
-      organization: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -21,6 +22,7 @@ jobs:
 
       - name: Output team members
         run: echo ${{ steps.get-members.outputs.members }}
+
 
           
         
