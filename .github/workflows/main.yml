@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Get team members
         id: get_members
         run: |
@@ -17,13 +18,15 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             https://api.github.com/orgs/uncoma-curza-lab/teams/peylw24/members > response.json
-          cat response.json
+          jq -r '.[].login' response.json > members.txt
+          cat members.txt
+
       - name: Generate member pages
         run: |
           while IFS= read -r member; do
-            # Obtener el nombre del alumno (adaptar según tu estructura)
+            # Adapt the name extraction according to your structure
             alumno=$(echo "$member" | sed 's/niunmango/Ramiro García Poggi/g')
-            # Verificar si el subdirectorio ya existe
+            # Check if the subdirectory already exists
             if [ ! -d "alumnos/$alumno" ]; then
               mkdir -p "alumnos/$alumno"
               cp index.html "alumnos/$alumno/index.html"
@@ -31,6 +34,7 @@ jobs:
               echo "<li><a href=\"alumnos/$alumno/index.html\">$alumno</a></li>" >> index.html
             fi
           done < members.txt
+
       - name: Update index.html
         run: |
           # Clear the existing list of links
@@ -39,6 +43,7 @@ jobs:
           while IFS= read -r member; do
             echo "<li><a href=\"alumnos/$member/index.html\">$member</a></li>" >> index.html
           done < members.txt
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
