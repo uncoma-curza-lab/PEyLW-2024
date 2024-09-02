@@ -18,9 +18,9 @@ ul {
 }
 
 li a {
-    min-height: 100px; /* Minimum height of 100px */
+    min-width: 100px;
     padding: 15px; /* Adjust padding as needed */
-    color: #000; /* Darker text color */
+    color: white; /* Darker text color */
     font-weight: bold; /* Clearer text */
     display: flex; /* Use flexbox for side-by-side layout */
     align-items: center; /* Center content vertically */
@@ -28,6 +28,6 @@ li a {
 }
 
 li a:hover {
-    background-color: #333; /* Darker hover background */
-    color: #fff; /* White text on hover */
+    background-color: #222; /* Darker hover background */
+    color: red; /* White text on hover */
 }
