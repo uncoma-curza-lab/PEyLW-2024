@@ -16,7 +16,7 @@ jobs:
         id: get-members
         uses: garnertb/get-team-members@v1
         with:
-          org_slug: uncoma-curza-lab
+          org: uncoma-curza-lab
           team_slug: peylw24
           token: ${{ secrets.GITHUB_TOKEN }}
 
