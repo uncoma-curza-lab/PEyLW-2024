@@ -1,47 +1,24 @@
-name: Generate Member Pages
+name: List Team Members
 
-on:
-  push:
-    branches: [main]
+on: [push]
 
 jobs:
-  build:
+  list-team-members:
     runs-on: ubuntu-latest
+    permissions:
+      organization: read
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Get team members
-        id: get_members
-        run: |
-          curl -L \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d '{"query":"{ organization(login: \"uncoma-curza-lab\") { team(slug: \"peylw24\") { members(first: 100) { nodes { login } } } } }"}' \
-            https://api.github.com/graphql > response.json
-          jq -r '.data.organization.team.members.nodes[].login' response.json > members.txt
-          cat members.txt
-
-      - name: Generate member pages
-        run: |
-          while IFS= read -r member; do
-            alumno=$(echo "$member" | sed 's/niunmango/Ramiro García Poggi/g')
-            if [ ! -d "alumnos/$alumno" ]; then
-              mkdir -p "alumnos/$alumno"
-              cp index.html "alumnos/$alumno/index.html"
-              sed -i "s/niunmango/$alumno/g" "alumnos/$alumno/index.html"
-              echo "<li><a href=\"alumnos/$alumno/index.html\">$alumno</a></li>" >> index.html
-            fi
-          done < members.txt
-
-      - name: Update index.html
-        run: |
-          sed -i '/<li><a href="\/alumnos\/.*\/index\.html">.*<\/a><\/li>/d' index.html
-          while IFS= read -r member; do
-            echo "<li><a href=\"alumnos/$member/index.html\">$member</a></li>" >> index.html
-          done < members.txt
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: List team members
+        id: get-members
+        uses: GuillaumeFalourd/github-team-members@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          org_slug: uncoma-curza-lab
+          team_slug: peylw24
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Output team members
+        run: echo "Team members: ${{ steps.get-members.outputs.members }}"
+        
