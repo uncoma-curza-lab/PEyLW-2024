@@ -46,7 +46,7 @@ Programación estatica y laboratorio web - 2024
    git push --set-upstream origin nombre_branch
    ```
    Reemplaza "Nombre y Apellido - Labo #" con tu nombre y apellido y el número de laboratorio que entregas.
-   ```
+
    Estos comandos descargan los cambios más recientes del repositorio remoto y actualizan tu rama local `gh-pages` con ellos.
 
 ### 8. Fusionar tu rama con gh-pages
