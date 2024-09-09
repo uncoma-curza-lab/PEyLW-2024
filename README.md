@@ -28,7 +28,7 @@ Programación estatica y laboratorio web - 2024
 ### 4. Mover a rama gh-pages
    ```bash
    git checkout gh-pages
-
+   ```
 ### 5. Crear una nueva rama para tus cambios
    ```bash
    git checkout -b mi_nueva_rama
