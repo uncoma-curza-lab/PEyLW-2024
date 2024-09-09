@@ -31,9 +31,9 @@ Programación estatica y laboratorio web - 2024
    ```
 ### 5. Crear una nueva rama para tus cambios
    ```bash
-   git checkout -b mi_nueva_rama
+   git checkout -b <nombre_usuario>-<tarea_o_laboratorio>
    ```
-   Reemplazar "mi_nueva_rama" con un nombre descriptivo para tu nueva rama (por ejemplo, "nombre_usuario-laboratorio2").
+   Reemplazar "<nombre_usuario>-<tarea_o_laboratorio>" con un nombre descriptivo para tu nueva rama (por ejemplo, "nombre_usuario-laboratorio2").
 
 ### 6. Realizar tus cambios
    * **Editar los archivos:** Usar tu editor de código (recomendamos VSCode) para los cambios necesarios en los archivos de tu proyecto.
@@ -53,7 +53,7 @@ Programación estatica y laboratorio web - 2024
    ```bash
    git checkout gh-pages
    git pull
-   git merge mi_nueva_rama
+   git merge <nombre_usuario>-<tarea_o_laboratorio>
    ```
    Reemplaza `mi_nueva_rama` con el nombre de tu rama.
 
@@ -64,15 +64,24 @@ Programación estatica y laboratorio web - 2024
    git push origin gh-pages
    ```
 
+### 10. Tener en cuenta
+
+Cada vez que se trabaje sobre una rama se deben realizar un git fetch all para actualizar las ramas.
+
+   ```bash
+   git fetch --all
+   ```
+
 ### Resumen de los pasos:
-1. **Clonar:** Descarga el repositorio completo. **UNA SOLA VEZ**, luego se deberá actualizar gh-pages como en el punto 6.
-2. **Crear rama:** Crea una nueva rama para tus cambios.
-3. **Realizar cambios:** Edita los archivos y guarda.
-4. **Commitear:** Guarda los cambios en el historial local.
-5. **Cambiar a gh-pages:** Prepararse para fusionar.
-6. **Actualizar gh-pages:** Obtener los últimos cambios de la rama remota.
-7. **Fusionar:** Combinar tu rama con gh-pages.
-8. **Subir:** Publicar los cambios en el repositorio remoto.
 
-
+1. [Clonar el repositorio]
+2. [Entrar en el directorio del proyecto]
+3. [Verificar las ramas disponibles]
+4. [Cambiar a la rama `gh-pages`]
+5. [Crear una nueva rama para tus cambios]
+6. [Realizar cambios en los archivos]
+7. [Agregar y hacer commit de los cambios]
+8. [Fusionar tu rama con `gh-pages`]
+9. [Subir los cambios fusionados al repositorio remoto]
+10. [Actualizar ramas]
 
