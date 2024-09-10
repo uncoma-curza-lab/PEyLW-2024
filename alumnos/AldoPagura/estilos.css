@@ -6,7 +6,12 @@ header{
 }
 
 section{
-    font-size: large;
-    padding: auto;
-    margin: auto;
+    font-size: 30px;
+    padding-top: 20px;
+    padding-left: 33%;
+    
+}
+nav{
+    font-size: 20px;
+    padding-left: 80%;
 }
