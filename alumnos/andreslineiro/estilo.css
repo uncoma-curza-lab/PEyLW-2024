@@ -1,0 +1,58 @@
+body{
+    width: 90%;
+    height: 90%;
+    background-color: rgb(150, 200, 236);
+    font-family: 'Courier New', Courier, monospace;
+    text-align: justify;
+}
+header {
+    width:80%;
+    color:white;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    }
+/*Menu*/
+div {
+    float:left;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+nav {
+    float:left;
+}
+nav ul {
+    list-style-type: none;
+}
+nav li {
+    
+    background-color:rgb(5, 155, 220);
+    border-radius: 20px;
+    float:left;
+    margin-right:30px;
+}
+h2{
+    margin-top: 100px;
+    text-decoration:underline;
+    text-align: center;
+}
+
+img {
+    border-radius: 50%;
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: rgb(228, 233, 233);
+}
+
+footer{
+    margin-top: 50%;
+    text-align: center;
+}
