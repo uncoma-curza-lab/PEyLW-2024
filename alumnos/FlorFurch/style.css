@@ -1,0 +1,22 @@
+body {
+    background-color: #eaeaea;
+    margin: 0;
+}
+
+header {
+background-color: #111;
+padding: 5em;
+margin: 0;
+}
+
+h1 {
+    color: #eaeaea;
+    font-family: sans-serif;
+    font-size: x-large;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+main {
+    padding: 15%;
+}
