@@ -5,15 +5,23 @@ body {
 
 header {
 background-color: #265073;
-padding: 5vh 10vw 10vh 10vw;
+padding: 5em;
 margin: 0;
+}
+
+header h1{
+    width: 50%;
+    float: left;
+    display: contents;
+    
 }
 
 nav {
     font-family: sans-serif;
     font-size: medium;
     font-weight: 500;
-    margin-top: 50px;
+    float: right;
+    vertical-align: middle;
 }
 
 nav a {
