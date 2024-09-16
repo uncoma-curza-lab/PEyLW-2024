@@ -5,8 +5,25 @@ body {
 
 header {
 background-color: #111;
-padding: 5em;
+padding: 5vh 10vw 10vh 10vw;
 margin: 0;
+}
+
+nav {
+    font-family: sans-serif;
+    font-size: medium;
+    font-weight: 500;
+    margin-top: 50px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #eaeaea;
+}
+
+.btn {
+    padding: 20px;
+    border: #eaeaea 1px solid;
 }
 
 h1 {
@@ -18,5 +35,5 @@ h1 {
 }
 
 main {
-    padding: 15%;
+    padding: 5vh 10vw;
 }
