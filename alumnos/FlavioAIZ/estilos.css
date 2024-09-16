@@ -12,7 +12,7 @@ body {
    }
    image {
     float: left;
-    border: blue;
+    border: rgb(6, 6, 218);
    }
    article {
     width:90%;
