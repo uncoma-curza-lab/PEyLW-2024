@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@ p {
     margin-bottom: 20px;
 }
 
-/* Enlaces */
+
 a {
     color: #0077b6;
     text-decoration: none;
@@ -39,7 +39,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Botones */
+
 button {
     background-color: #0077b6;
     color: white;
@@ -56,15 +56,15 @@ button:hover {
     transform: translateY(-2px);
 }
 
-/* Contenedores */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    flex-grow: 1; /* Asegura que el contenido crezca para llenar el espacio disponible */
+    flex-grow: 1; 
 }
 
-/* Tarjetas */
+
 .card {
     background-color: white;
     border-radius: 10px;
@@ -93,7 +93,7 @@ footer {
     text-align: center;
     padding: 20px;
     font-size: 14px;
-    margin-top: auto; /* Esto empuja el footer hacia el final de la página */
+    margin-top: auto; 
 }
 
 footer a {
@@ -105,7 +105,7 @@ footer a:hover {
     color: #88c0d0;
 }
 
-/* Estilos de formulario */
+
 input[type="text"], input[type="email"], textarea {
     width: 100%;
     padding: 12px;
@@ -121,7 +121,7 @@ input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
     outline: none;
 }
 
-/* Encabezado de navegación */
+
 nav {
     background-color: #003366;
     padding: 15px;
