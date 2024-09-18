@@ -13,7 +13,6 @@ header h1{
     width: 50%;
     float: left;
     display: contents;
-    
 }
 
 nav {
@@ -27,7 +26,6 @@ nav {
 nav a {
     text-decoration: none;
     color: #eaeaea;
-   
 }
 
 main {
