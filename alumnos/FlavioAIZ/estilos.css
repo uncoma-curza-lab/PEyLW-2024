@@ -4,7 +4,7 @@ body {
    }
    header {
     font-style: italic,initial;
-    width:90%;
+    width: 90%;
     background-color:White;
     color:red;
     margin-right: auto;
@@ -28,7 +28,7 @@ body {
    main {
     width:95%;
     background-color:White;
-    color:rgba(8, 26, 182);
+    color:blue;
     margin-right: auto;
     margin-left: auto;
    }
